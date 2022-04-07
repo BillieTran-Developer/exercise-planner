@@ -4,6 +4,7 @@ const exerciseReducer = (state, action) => {
             return{
                 ...state,
                 exercises: action.payload,
+                loading: false
             }
         case 'GET_EXERCISE':
             return{

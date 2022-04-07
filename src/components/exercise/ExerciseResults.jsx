@@ -8,8 +8,6 @@ function ExerciseResults() {
     const {exercises, loading} = useContext(ExerciseContext)
 
     if(!loading){
-       return <Loading/>
-    } else {
         return(
             <div id='cards-container'>
                 <div id='cards-results-title'>
@@ -22,6 +20,9 @@ function ExerciseResults() {
                 </div>
             </div>
         )
+       
+    } else {
+        return <Loading/>
     }
 }
 
