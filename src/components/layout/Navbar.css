@@ -1,0 +1,31 @@
+.active-link {
+    color: #26f7ee
+}
+
+.non-active-link {
+    color: #fff;
+}
+
+nav {
+    background: #000;
+}
+
+.navbar {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+.navbar {
+    margin-right: 80px;
+}
+
+.navbar li {
+    margin: 30px 40px;
+    font-weight: 600;
+}
+
+.navbar li a {
+    text-decoration: none;
+}

@@ -1,0 +1,17 @@
+#search-container {
+    position: relative;
+}
+
+#search-container img{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(.7);
+}
+
+#search-container-bar {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

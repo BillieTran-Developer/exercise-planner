@@ -1,0 +1,11 @@
+#video-info-container {
+    padding: 20px;
+    background: #fff;
+    width: 48%;
+    display: flex;
+    flex-flow: row;
+}
+
+#video-info-details {
+    margin-left: 10px;
+}

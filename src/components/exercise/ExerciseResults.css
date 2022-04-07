@@ -1,0 +1,22 @@
+#cards-container {
+    margin-bottom: 2rem;
+}
+
+#cards-results-title {
+    text-align: center;
+    color: #000;
+    margin: 2rem;
+    font-weight: 1000;
+    font-size: 2rem;
+}
+
+#cards-results-container {
+    width: 90vw;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+

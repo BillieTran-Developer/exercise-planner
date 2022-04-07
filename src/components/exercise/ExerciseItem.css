@@ -1,0 +1,65 @@
+#exercise-card {
+    position: relative;
+    margin: 10px;
+    width: 200px;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 6px;
+}
+
+#exercise-card-muscle {
+    color: #fff;
+    background: #aaa;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#exercise-card img{
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+#exercise-card-info {
+
+}
+
+#exercise-card-info p {
+    margin: 4px;
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: #000;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+#exercise-card a:link, #exercise-card a:visited, #exercise-card a:hover, #exercise-card a:active {
+    text-decoration: none;
+}   
+
+#exercise-card-equipment {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+    background: #26f7ee;
+    padding: 8px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/* Prevents bottom element from overlapping exercise text */
+#prevent-overlap {
+    height: 50px;
+}

@@ -1,0 +1,13 @@
+#video-list-container {
+    padding: 10px;
+    background: #f9f9f9;
+    border-top: none;
+    margin: 32px 2px;
+}
+
+#video-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px 15px;
+}

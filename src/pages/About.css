@@ -1,0 +1,30 @@
+#about-container {
+    position: relative;
+    background: #000;
+}
+
+#about-container img {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+    filter: brightness(.5);
+}
+
+#about-info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -90%);
+    width: 500px;
+    padding: 60px;
+    background: rgba(255, 255, 255, .40);
+    backdrop-filter: blur(10px);
+}
+
+#about-info h1 {
+    margin-bottom: 50px;
+    font-size: 3rem;
+    text-align: center;
+    color: #26f7ee;
+}
+
