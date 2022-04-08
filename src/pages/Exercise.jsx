@@ -24,40 +24,38 @@ function Exercise() {
 
     console.log('From items: ' + items)
 
-    if(loading){
-        return(
-            <Loading/>
-        )
-    } else {
-        return(
-            <div id='exercise-page-container'>
-                <div id='exercise-info-title'>
-                    <h1>{name}</h1>
-                </div>
-                <div id='exercise-info-container'>
-                    <div id='exercise-info-img'>
-                        <img src={gifUrl} alt={name} />
-                    </div>
-                    <div id='exercise-info-details'>
-                        <div id='label-container'>
-                            <p><span id='body-part-label' className='label'>{bodyPart}</span></p>
-                            <p><span id='target-label' className='label'>{target}</span></p>
-                            <p><span id='equipment-label' className='label'>{equipment}</span></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div>
-                    <YTVideoList videos={items}/>
-                </div>
-                <Link to='/'>
-                    <button id='return-link'>
-                        <img src={returnIcon} alt="Return" />
-                    </button>
-                </Link>
+    return(
+        <div id='exercise-page-container'>
+            <div id='exercise-info-title'>
+                <h1>{name}</h1>
             </div>
-        )
-    }
+            <div id='exercise-info-container'>
+                <div id='exercise-info-img'>
+                    <img src={gifUrl} alt={name} />
+                </div>
+                <div id='exercise-info-details'>
+                    <div id='label-container'>
+                        <p><span id='body-part-label' className='label'>{bodyPart}</span></p>
+                        <p><span id='target-label' className='label'>{target}</span></p>
+                        <p><span id='equipment-label' className='label'>{equipment}</span></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                {
+                    // Check loading status to load correct component
+                    loading ? <Loading/> : <YTVideoList videos={items}/>
+                }
+            </div>
+            <Link to='/'>
+                <button id='return-link'>
+                    <img src={returnIcon} alt="Return" />
+                </button>
+            </Link>
+        </div>
+    )
+
 }
 
 export default Exercise

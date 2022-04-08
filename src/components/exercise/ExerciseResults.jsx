@@ -9,18 +9,20 @@ function ExerciseResults() {
 
     if(!loading){
         return(
-            <div id='cards-container'>
-                <div id='cards-results-title'>
-                    <p>Search Results:</p>
-                </div>
+            <div id='results-container'>
+                {
+                    exercises.length === 0 ? null : 
+                    (<div id='cards-results-title'>
+                        <p>Search Results:</p>
+                    </div>)
+                }  
                 <div id='cards-results-container'>
                     {exercises.map(exercise => {
                         return <ExerciseItem key={exercise.id} exercise={exercise}/>
                     })}
                 </div>
             </div>
-        )
-       
+        ) 
     } else {
         return <Loading/>
     }

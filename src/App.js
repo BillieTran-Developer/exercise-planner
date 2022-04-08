@@ -14,11 +14,11 @@ import Exercise from './pages/Exercise'
 
 function App() {
     return(
-        <div id='page-container'>
+        <>
             <ExerciseProvider>
                 <YoutubeProvider>
-                    <div className='main-container'>
-                        <Router>
+                    <Router>
+                        <div className='main-container'>
                             <div id='nav-bar'>
                                 <Navbar />
                             </div>
@@ -29,14 +29,14 @@ function App() {
                                     <Route path='/exercise/:exercise' element={<Exercise/>}/>
                                 </Routes>
                             </div>
-                        </Router>
-                        <div id='footer'>
-                            <Footer/>
+                            <div id='footer'>
+                                <Footer/>
+                            </div>
                         </div>
-                    </div>
+                    </Router>
                 </YoutubeProvider>
             </ExerciseProvider>
-        </div>
+        </>
     )
 }
 
