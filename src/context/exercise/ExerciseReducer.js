@@ -17,6 +17,16 @@ const exerciseReducer = (state, action) => {
                 ...state,
                 loading: true
             }
+        case 'STOP_LOADING':
+            return{
+                ...state,
+                loading: false
+            }
+        case 'SET_ERROR':
+            return{
+                ...state,
+                error: 'Could not load data'
+            }
         default:
             return state
     }

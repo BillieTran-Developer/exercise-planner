@@ -30,7 +30,7 @@ export const YoutubeProvider = ({children}) => {
             }
         };
         
-        try{
+        try {
             // Fetch and set data
             const res = await fetch(`https://youtube-search-results.p.rapidapi.com/youtube-search/?q=instructions+to+${params}`, options)
             
@@ -38,12 +38,15 @@ export const YoutubeProvider = ({children}) => {
             if(!res.ok) {
                 throw new Error(res.statusText)
             }
+
             const data = await res.json()
+
             // Set videos data and set loading to false
             dispatch({
                 type: 'GET_VIDEOS',
                 payload: data
             })  
+
         } catch(e) {
             // Check error type
             if(e.message === 'AbortError'){

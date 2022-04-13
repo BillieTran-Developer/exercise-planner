@@ -3,6 +3,7 @@ import returnIcon from '../components/layout/assets/return-icon.png'
 import {useEffect, useContext} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import Loading from '../components/layout/Loading'
+import Error from '../components/layout/Error'
 import YTVideoList from '../components/youtube/YTVideoList'
 import ExerciseContext from '../context/exercise/ExerciseContext'
 import YoutubeContext from '../context/youtube/YoutubeContext'
@@ -47,7 +48,7 @@ function Exercise() {
                     loading && <Loading/>
                 }
                 {
-                    error && <div>{error}</div>
+                    error && <Error error={error}/>
                 }
                 {
                     items && <YTVideoList videos={items}/>

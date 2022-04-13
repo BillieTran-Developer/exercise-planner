@@ -12,16 +12,17 @@ export const ExerciseProvider = ({children}) => {
         exercises: [],
         exercise: {},
         loading: false,
+        error: null
     }
 
     const [state, dispatch] = useReducer(exerciseReducer, initialState)
 
     // Get exercises search results
-    const searchExercise = async (text) => {
+    const searchExercise = async (params) => {
+        
         setLoading()
 
-        const params = text
-
+        // Api OPTIONS method request
         const options = {
             method: 'GET',
             headers: {
@@ -30,20 +31,34 @@ export const ExerciseProvider = ({children}) => {
             }
         };
         
-        const res = await fetch(`https://exercisedb.p.rapidapi.com/exercises/name/${params}`, options)
+        try {
+            // Fetch and set data
+            const res = await fetch(`https://exercisedb.p.rapidapi.com/exercises/name/${params}`, options)
 
-        const data = await res.json()
+            // Checks response for errors
+            if(!res.ok) {
+                throw new Error(res.statusText)
+            }
 
-        console.log(data)
+            const data = await res.json()
 
-        dispatch({
-            type: 'GET_EXERCISES',
-            payload: data,
-        })
+            // Set exercises data and set loading to false
+            dispatch({
+                type: 'GET_EXERCISES',
+                payload: data,
+            })
+        } catch(e) {
+            // Sets loading to false
+            stopLoading()
+            setError()
+            console.log(e.message)
+        }
+
     }
 
     // Return a single exercise
     const selectedExercise = (exercises, selected) => {
+        // Set loading to true
         setLoading()
 
         let data = {}
@@ -55,16 +70,17 @@ export const ExerciseProvider = ({children}) => {
             }
         })
 
+        // Set exercise data and set loading to false
         dispatch({
                     type: 'GET_EXERCISE',
                     payload: data,
                 })
     }
 
-    // Set Loading
-    const setLoading = () => dispatch({
-        type: 'SET_LOADING'
-    })
+    // Dispatches
+    const setLoading = () => dispatch({type: 'SET_LOADING'})
+    const stopLoading = () => dispatch({type: 'STOP_LOADING'})
+    const setError = () => dispatch({type: 'SET_ERROR'})
 
     return <ExerciseContext.Provider value={{
         ...state,
