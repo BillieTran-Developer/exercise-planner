@@ -1,6 +1,4 @@
 import './YTVideoList.css'
-import { useContext } from "react"
-import YoutubeContext from "../../context/youtube/YoutubeContext"
 import YTVideoItem from "./YTVideoItem"
 
 function YTVideoList({videos}) {

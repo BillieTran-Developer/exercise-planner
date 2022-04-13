@@ -9,7 +9,7 @@ import YoutubeContext from '../context/youtube/YoutubeContext'
 
 function Exercise() {
     const {exercises, exercise, selectedExercise} = useContext(ExerciseContext)
-    const {videos, searchVideos, loading} = useContext(YoutubeContext)
+    const {videos, searchVideos, loading, error} = useContext(YoutubeContext)
 
 
     const params = useParams()
@@ -44,8 +44,13 @@ function Exercise() {
             
             <div>
                 {
-                    // Check loading status to load correct component
-                    loading ? <Loading/> : <YTVideoList videos={items}/>
+                    loading && <Loading/>
+                }
+                {
+                    error && <div>{error}</div>
+                }
+                {
+                    items && <YTVideoList videos={items}/>
                 }
             </div>
             <Link to='/'>

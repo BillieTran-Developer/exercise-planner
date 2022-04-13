@@ -11,16 +11,17 @@ export const YoutubeProvider = ({children}) => {
     const initialState = {
         videos: [],
         loading: false,
+        error: null
     }
 
     const [state, dispatch] = useReducer(youtubeReducer, initialState)
 
     // Get list of videos
-    const searchVideos = async (text) => {
+    const searchVideos = async (params) => {
+        // Set loading to true
         setLoading()
-        
-        const params = text
 
+        // Api OPTIONS method request
         const options = {
             method: 'GET',
             headers: {
@@ -29,22 +30,38 @@ export const YoutubeProvider = ({children}) => {
             }
         };
         
-        const res = await fetch(`https://youtube-search-results.p.rapidapi.com/youtube-search/?q=instructions+to+${params}`, options)
+        try{
+            // Fetch and set data
+            const res = await fetch(`https://youtube-search-results.p.rapidapi.com/youtube-search/?q=instructions+to+${params}`, options)
+            
+            // Checks response for errors
+            if(!res.ok) {
+                throw new Error(res.statusText)
+            }
+            const data = await res.json()
+            // Set videos data and set loading to false
+            dispatch({
+                type: 'GET_VIDEOS',
+                payload: data
+            })  
+        } catch(e) {
+            // Check error type
+            if(e.message === 'AbortError'){
+                console.log('Fetch Aborted')
+            } else {
+                // Sets loading to false
+                stopLoading()
+                setError()
+                console.log(e.message)
+            }
+        }
 
-        const data = await res.json()
-
-        dispatch({
-            type: 'GET_VIDEOS',
-            payload: data
-        })  
     }
 
-    // Set Loading
-    const setLoading = () => {
-        dispatch({
-            type: 'SET_LOADING'
-        })
-    } 
+    // Dispatches
+    const setLoading = () => {dispatch({type: 'SET_LOADING'})} 
+    const stopLoading = () => {dispatch({type: 'STOP_LOADING'})}
+    const setError = () => {dispatch({type: 'SET_ERROR'})}
 
     return <YoutubeContext.Provider value={{
         ...state,
